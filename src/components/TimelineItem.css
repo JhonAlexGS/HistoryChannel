@@ -1,0 +1,217 @@
+.timeline-item {
+  position: relative;
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline-item.left {
+  justify-content: flex-start;
+  padding-right: 50%;
+}
+
+.timeline-item.right {
+  justify-content: flex-end;
+  padding-left: 50%;
+}
+
+.timeline-content {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid #4ecdc4;
+  border-radius: 15px;
+  padding: 25px;
+  max-width: 450px;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.timeline-content.no-expand {
+  cursor: default;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(78, 205, 196, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-content.expanded {
+  max-width: 600px;
+  transform: scale(1.02);
+  box-shadow: 0 15px 50px rgba(78, 205, 196, 0.4);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.timeline-icon {
+  position: absolute;
+  top: 20px;
+  right: -60px;
+  width: 50px;
+  height: 50px;
+  background: #4ecdc4;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+  z-index: 10;
+}
+
+.timeline-item.left .timeline-icon {
+  right: -60px;
+}
+
+.timeline-item.right .timeline-icon {
+  left: -60px;
+  right: auto;
+}
+
+.timeline-year {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.timeline-title {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.timeline-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 10px;
+}
+
+.timeline-expand-indicator {
+  margin-top: 15px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover .timeline-expand-indicator {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.timeline-expanded-content {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+  animation: expandContent 0.4s ease forwards;
+}
+
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 1000px;
+    transform: translateY(0);
+  }
+}
+
+.timeline-section {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid rgba(30, 144, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.timeline-section:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-left-color: rgba(30, 144, 255, 0.8);
+  transform: translateX(5px);
+}
+
+.timeline-section.fun-fact {
+  border-left-color: rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.05);
+}
+
+.timeline-section.fun-fact:hover {
+  border-left-color: rgba(255, 215, 0, 0.8);
+  background: rgba(255, 215, 0, 0.1);
+}
+
+.timeline-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.timeline-section-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline-item.left,
+  .timeline-item.right {
+    padding: 0;
+    padding-left: 60px;
+    justify-content: flex-start;
+  }
+
+  .timeline-item.left .timeline-icon,
+  .timeline-item.right .timeline-icon {
+    left: -10px;
+    right: auto;
+  }
+
+  .timeline-content {
+    max-width: 100%;
+  }
+
+  .timeline-content.expanded {
+    max-width: 100%;
+  }
+
+  .timeline-section {
+    padding: 12px;
+  }
+
+  .timeline-section-title {
+    font-size: 13px;
+  }
+
+  .timeline-section-text {
+    font-size: 13px;
+  }
+}
